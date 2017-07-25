@@ -19,48 +19,50 @@ filter AvoidUsingThrow {
             $ast
         )
 
-        [Boolean]$isAdvanced = $ast.Find( {
-            param ( $ast )
-
-            $ast -is [System.Management.Automation.Language.AttributeAst] -and 
-            $ast.TypeName.Name -in 'CmdletBinding', 'Parameter'
-        }, $true )
-
-        if ($isAdvanced) {
-            [Array]$throwStatements = $ast.Find( {
+        if ($ast -is [System.Management.Automation.Language.FunctionDefinitionAst]) {
+            [Boolean]$isAdvanced = $ast.Find( {
                 param ( $ast )
 
-                $ast -is [System.Management.Automation.Language.ThrowStatementAst]
+                $ast -is [System.Management.Automation.Language.AttributeAst] -and 
+                $ast.TypeName.Name -in 'CmdletBinding', 'Parameter'
             }, $true )
-            if ($throwStatements) {
-                [Array]$tryStatements = $ast.Find( {
+
+            if ($isAdvanced) {
+                [Array]$throwStatements = $ast.Find( {
                     param ( $ast )
 
-                    $ast -is [System.Management.Automation.Language.TryStatementAst]
+                    $ast -is [System.Management.Automation.Language.ThrowStatementAst]
                 }, $true )
+                if ($throwStatements) {
+                    [Array]$tryStatements = $ast.Find( {
+                        param ( $ast )
 
-                if (-not $tryStatements) {
-                    $ast
-                } elseif ($tryStatements) {
-                    $isWithinExtentOfTry = $false
-                    foreach ($throwStatement in $throwStatements) {
-                        foreach ($tryStatement in $tryStatements) {
-                            if ($throwStatement.Extent.StartOffset -gt $tryStatement.Extent.StartOffset -and 
-                                    $throwStatement.Extent.EndOffset -lt $tryStatement.Extent.EndOffset) {
+                        $ast -is [System.Management.Automation.Language.TryStatementAst]
+                    }, $true )
 
-                                $isWithinExtentOfTry = $true
+                    if (-not $tryStatements) {
+                        $ast
+                    } elseif ($tryStatements) {
+                        $isWithinExtentOfTry = $false
+                        foreach ($throwStatement in $throwStatements) {
+                            foreach ($tryStatement in $tryStatements) {
+                                if ($throwStatement.Extent.StartOffset -gt $tryStatement.Extent.StartOffset -and 
+                                        $throwStatement.Extent.EndOffset -lt $tryStatement.Extent.EndOffset) {
+
+                                    $isWithinExtentOfTry = $true
+                                }
                             }
                         }
-                    }
-                    if (-not $isWithinExtentOfTry) {
-                        $ast
+                        if (-not $isWithinExtentOfTry) {
+                            $ast
+                        }
                     }
                 }
             }
         }
     }, $true ) | ForEach-Object {
         [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{
-            Message  = 'throw is used to terminate a script block outside of try.'
+            Message  = 'throw is used to terminate a function outside of try in the function {0}.' -f $_.name
             Extent   = $ast.Extent
             RuleName = $myinvocation.MyCommand.Name
             Severity = 'Warning'
