@@ -1,4 +1,4 @@
-function AvoidEmptyNamedBlocks {
+filter AvoidEmptyNamedBlocks {
     <#
     .SYNOPSIS
         AvoidEmptyNamedBlocks

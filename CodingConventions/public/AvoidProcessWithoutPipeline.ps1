@@ -1,4 +1,4 @@
-function AvoidProcessWithoutPipeline {
+filter AvoidProcessWithoutPipeline {
     <#
     .SYNOPSIS
         AvoidProcessWithoutPipeline
