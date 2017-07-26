@@ -14,14 +14,9 @@ filter AvoidUsingAddType {
         $ast
     )
 
-    $ast.FindAll( {
-        param (
-            $ast
-        )
+    if ($ast -is [System.Management.Automation.Language.CommandAst] -and
+        $ast.GetCommandName() -eq 'Add-Type') {
 
-        $ast -is [System.Management.Automation.Language.CommandAst] -and
-        $ast.GetCommandName() -eq 'Add-Type'
-    }, $true ) | ForEach-Object {
         [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{
             Message  = 'Add-Type is used to load an assembly.'
             Extent   = $ast.Extent

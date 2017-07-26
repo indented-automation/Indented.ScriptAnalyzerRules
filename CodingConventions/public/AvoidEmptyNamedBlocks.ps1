@@ -1,28 +1,27 @@
-filter AvoidNestedFunctions {
+function AvoidEmptyNamedBlocks {
     <#
     .SYNOPSIS
-        AvoidNestedFunctions
+        AvoidEmptyNamedBlocks
     .DESCRIPTION
-        Functions should not contain nested functions.
+        Functions and scripts should not contain empty begin, process, end, or dynamicparam declarations.
     #>
 
     [CmdletBinding()]
     [OutputType([Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord[]])]
     param (
         [Parameter(ValueFromPipeline = $true)]
-        [System.Management.Automation.Language.FunctionDefinitionAst]
+        [System.Management.Automation.Language.ScriptBlockAst]
         $ast
     )
 
-    $ast.Body.FindAll( {
-        param (
-            $ast
-        )
+    $ast.FindAll( {
+        param ( $ast )
 
-        $ast -is [System.Management.Automation.Language.FunctionDefinitionAst]
+        $ast -is [System.Management.Automation.Language.NamedBlockAst] -and
+        $ast.Statements.Count -eq 0
     }, $true ) | ForEach-Object {
         [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{
-            Message  = 'The function {0} in {1} contains the nested function {2}.' -f $ast.Name, $ast.Extent.File, $_.name
+            Message  = 'Empty {0} block.' -f $_.BlockKind
             Extent   = $_.Extent
             RuleName = $myinvocation.MyCommand.Name
             Severity = 'Warning'
