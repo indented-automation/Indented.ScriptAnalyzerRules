@@ -4,6 +4,7 @@ function Assert-RuleCompliance {
     #>
 
     param (
+        # The name of a compliance rule.
         [String]$RuleName
     )
 

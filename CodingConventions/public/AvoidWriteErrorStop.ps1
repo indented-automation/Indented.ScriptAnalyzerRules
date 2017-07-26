@@ -4,11 +4,16 @@ filter AvoidWriteErrorStop {
         AvoidWriteErrorStop
     .DESCRIPTION
         Functions and scripts should avoid using Write-Error Stop to terminate a running command or pipeline. The context of the thrown error is Write-Error.
+    .EXAMPLE
+        Invoke-CodingConventionRule -ScriptBlock { Write-Error 'message' -ErrorAction Stop } -RuleName AvoidWriteErrorStop
+
+        Execute the rule against a script block using Invoke-CodingConventionRule.
     #>
 
     [CmdletBinding()]
     [OutputType([Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord[]])]
     param (
+        # An AST node.
         [Parameter(ValueFromPipeline = $true)]
         [System.Management.Automation.Language.CommandAst]
         $ast

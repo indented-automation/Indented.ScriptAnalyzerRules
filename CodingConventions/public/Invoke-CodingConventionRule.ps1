@@ -14,6 +14,7 @@ function Invoke-CodingConventionRule {
     #>
 
     [CmdletBinding(DefaultParameterSetName = 'FromPath')]
+    [OutputType([Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord])]
     param (
         [Parameter(Mandatory = $true, ParameterSetName = 'FromPath')]
         [String]$Path,

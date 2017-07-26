@@ -4,11 +4,16 @@ filter AvoidEmptyNamedBlocks {
         AvoidEmptyNamedBlocks
     .DESCRIPTION
         Functions and scripts should not contain empty begin, process, end, or dynamicparam declarations.
+    .EXAMPLE
+        Invoke-CodingConventionRule -ScriptBlock { process { } } -RuleName AvoidEmptyNamedBlocks
+
+        Execute the rule against a script block using Invoke-CodingConventionRule.
     #>
 
     [CmdletBinding()]
     [OutputType([Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord[]])]
     param (
+        # An AST node.
         [Parameter(ValueFromPipeline = $true)]
         [System.Management.Automation.Language.ScriptBlockAst]
         $ast

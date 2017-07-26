@@ -4,11 +4,16 @@ filter AvoidUsingThrow {
         AvoidUsingThrow
     .DESCRIPTION
         Advanced functions and scripts should not use throw, except within a try / catch block. Throw is affected by ErrorAction.
+    .EXAMPLE
+        Invoke-CodingConventionRule -ScriptBlock { function name { [CmdletBinding()]param ( ); throw 'message' } } -RuleName AvoidUsingThrow
+
+        Execute the rule against a script block using Invoke-CodingConventionRule.
     #>
 
     [CmdletBinding()]
     [OutputType([Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord[]])]
     param (
+        # An AST node.
         [Parameter(ValueFromPipeline = $true)]
         [System.Management.Automation.Language.FunctionDefinitionAst]
         $ast

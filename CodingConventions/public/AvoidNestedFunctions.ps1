@@ -4,11 +4,16 @@ filter AvoidNestedFunctions {
         AvoidNestedFunctions
     .DESCRIPTION
         Functions should not contain nested functions.
+    .EXAMPLE
+        Invoke-CodingConventionRule -ScriptBlock { function outer { function inner { } } } -RuleName AvoidNestedFunctions
+
+        Execute the rule against a script block using Invoke-CodingConventionRule.
     #>
 
     [CmdletBinding()]
     [OutputType([Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord[]])]
     param (
+        # An AST node.
         [Parameter(ValueFromPipeline = $true)]
         [System.Management.Automation.Language.FunctionDefinitionAst]
         $ast

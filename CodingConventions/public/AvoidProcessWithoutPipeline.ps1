@@ -4,11 +4,16 @@ filter AvoidProcessWithoutPipeline {
         AvoidProcessWithoutPipeline
     .DESCRIPTION
         Functions and scripts should not declare process unless an input pipeline is supported.
+    .EXAMPLE
+        Invoke-CodingConventionRule -ScriptBlock { function name { process { } } } -RuleName AvoidProcessWithoutPipeline
+
+        Execute the rule against a script block using Invoke-CodingConventionRule.
     #>
 
     [CmdletBinding()]
     [OutputType([Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord[]])]
     param (
+        # An AST node.
         [Parameter(ValueFromPipeline = $true)]
         [System.Management.Automation.Language.ScriptBlockAst]
         $ast
