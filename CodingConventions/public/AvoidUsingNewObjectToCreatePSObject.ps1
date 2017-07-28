@@ -1,3 +1,6 @@
+using namespace Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic
+using namespace System.Management.Automation.Language
+
 filter AvoidUsingNewObjectToCreatePSObject {
     <#
     .SYNOPSIS
@@ -15,15 +18,15 @@ filter AvoidUsingNewObjectToCreatePSObject {
     param (
         # An AST node.
         [Parameter(ValueFromPipeline = $true)]
-        [System.Management.Automation.Language.CommandAst]
+        [CommandAst]
         $ast
     )
 
-    if ($ast -is [System.Management.Automation.Language.CommandAst] -and
+    if ($ast -is [CommandAst] -and
         $ast.GetCommandName() -eq 'New-Object' -and
         $ast.CommandElements.Where{ $_.ParameterName -like 'Prop*' }) {
 
-        [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{
+        [DiagnosticRecord]@{
             Message  = 'New-Object is used to create an object. [PSCustomObject] should be used instead.'
             Extent   = $ast.Extent
             RuleName = $myinvocation.MyCommand.Name

@@ -1,3 +1,6 @@
+using namespace Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic
+using namespace System.Management.Automation.Language
+
 filter AvoidUsingAddType {
     <#
     .SYNOPSIS
@@ -15,14 +18,14 @@ filter AvoidUsingAddType {
     param (
         # An AST node.
         [Parameter(ValueFromPipeline = $true)]
-        [System.Management.Automation.Language.CommandAst]
+        [CommandAst]
         $ast
     )
 
-    if ($ast -is [System.Management.Automation.Language.CommandAst] -and
+    if ($ast -is [CommandAst] -and
         $ast.GetCommandName() -eq 'Add-Type') {
 
-        [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{
+        [DiagnosticRecord]@{
             Message  = 'Add-Type is used to load an assembly.'
             Extent   = $ast.Extent
             RuleName = $myinvocation.MyCommand.Name

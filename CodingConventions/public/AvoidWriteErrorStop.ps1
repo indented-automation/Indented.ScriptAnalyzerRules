@@ -1,3 +1,7 @@
+using namespace Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic
+using namespace System.Management.Automation.Language
+using namespace System.Management.Automation
+
 filter AvoidWriteErrorStop {
     <#
     .SYNOPSIS
@@ -15,7 +19,7 @@ filter AvoidWriteErrorStop {
     param (
         # An AST node.
         [Parameter(ValueFromPipeline = $true)]
-        [System.Management.Automation.Language.CommandAst]
+        [CommandAst]
         $ast
     )
 
@@ -25,12 +29,12 @@ filter AvoidWriteErrorStop {
             $argumentIndex = $ast.CommandElements.IndexOf($parameter) + 1
             $argument = $ast.CommandElements[$argumentIndex].SafeGetValue()
             
-            [Enum]::Parse([System.Management.Automation.ActionPreference], $argument) -eq 'Stop'
+            [Enum]::Parse([ActionPreference], $argument) -eq 'Stop'
         }
     }
 
     if ($isErrorActionStopUsed) {
-        [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{
+        [DiagnosticRecord]@{
             Message  = 'Write-Error is used to create a terminating error. throw or $pscmdlet.ThrowTerminatingError should be used.'
             Extent   = $ast.Extent
             RuleName = $myinvocation.MyCommand.Name

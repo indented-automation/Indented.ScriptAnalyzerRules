@@ -1,3 +1,6 @@
+using namespace Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic
+using namespace System.Management.Automation.Language
+
 filter AvoidUsingThrow {
     <#
     .SYNOPSIS
@@ -15,14 +18,14 @@ filter AvoidUsingThrow {
     param (
         # An AST node.
         [Parameter(ValueFromPipeline = $true)]
-        [System.Management.Automation.Language.FunctionDefinitionAst]
+        [FunctionDefinitionAst]
         $ast
     )
 
     [Boolean]$isAdvanced = $ast.Find( {
         param ( $ast )
 
-        $ast -is [System.Management.Automation.Language.AttributeAst] -and 
+        $ast -is [AttributeAst] -and 
         $ast.TypeName.Name -in 'CmdletBinding', 'Parameter'
     }, $true )
 
@@ -33,7 +36,7 @@ filter AvoidUsingThrow {
     [Array]$throwStatements = $ast.FindAll( {
         param ( $ast )
 
-        $ast -is [System.Management.Automation.Language.ThrowStatementAst]
+        $ast -is [ThrowStatementAst]
     }, $true )
 
     if (-not $throwStatements) {
@@ -43,7 +46,7 @@ filter AvoidUsingThrow {
     [Array]$tryStatements = $ast.FindAll( {
         param ( $ast )
 
-        $ast -is [System.Management.Automation.Language.TryStatementAst]
+        $ast -is [TryStatementAst]
     }, $true )
 
     foreach ($throwStatement in $throwStatements) {
@@ -57,7 +60,7 @@ filter AvoidUsingThrow {
             }
         }
         if (-not $isWithinExtentOfTry) {
-            [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{
+            [DiagnosticRecord]@{
                 Message  = 'throw is used to terminate a function outside of try in the function {0}.' -f $ast.name
                 Extent   = $throwStatement.Extent
                 RuleName = $myinvocation.MyCommand.Name
