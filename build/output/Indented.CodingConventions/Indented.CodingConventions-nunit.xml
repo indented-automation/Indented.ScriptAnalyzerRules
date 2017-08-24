@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="78" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2017-08-24" time="14:23:16">
+  <environment user="ChriDent" machine-name="CND3400D3H" cwd="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions" user-domain="ITVPLC" platform="Microsoft Windows 7 Enterprise |C:\Windows|\Device\Harddisk0\Partition1" nunit-version="2.5.8.0" os-version="6.1.7601" clr-version="4.0.30319.42000" />
+  <culture-info current-culture="en-GB" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="7.7178" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\integration\Pester.AvoidNestedFunctions.tests.ps1" executed="True" result="Success" success="True" time="0" asserts="0" description="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\integration\Pester.AvoidNestedFunctions.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Pester: AvoidNestedFunctions" executed="True" result="Success" success="True" time="0" asserts="0" description="Pester: AvoidNestedFunctions">
+            <results />
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\integration\PSScriptAnalyzer.AvoidNestedFunctions.tests.ps1" executed="True" result="Success" success="True" time="3.4063" asserts="0" description="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\integration\PSScriptAnalyzer.AvoidNestedFunctions.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="PSScriptAnalyzer: AvoidNestedFunctions" executed="True" result="Success" success="True" time="3.4063" asserts="0" description="PSScriptAnalyzer: AvoidNestedFunctions">
+            <results>
+              <test-suite type="TestFixture" name="Present, Single result" executed="True" result="Success" success="True" time="1.705" asserts="0" description="Present, Single result">
+                <results>
+                  <test-case description="Nested function present, returns record" name="PSScriptAnalyzer: AvoidNestedFunctions.Present, Single result.Nested function present, returns record" time="1.705" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Present, Multiple results" executed="True" result="Success" success="True" time="0.7618" asserts="0" description="Present, Multiple results">
+                <results>
+                  <test-case description="Nested functions present, returns 2 records" name="PSScriptAnalyzer: AvoidNestedFunctions.Present, Multiple results.Nested functions present, returns 2 records" time="0.7618" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Absent" executed="True" result="Success" success="True" time="0.9396" asserts="0" description="Absent">
+                <results>
+                  <test-case description="Nested function absent, returns null" name="PSScriptAnalyzer: AvoidNestedFunctions.Absent.Nested function absent, returns null" time="0.9396" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\helper\Get-FunctionInfo.tests.ps1" executed="True" result="Success" success="True" time="0.3889" asserts="0" description="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\helper\Get-FunctionInfo.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-FunctionInfo" executed="True" result="Success" success="True" time="0.3889" asserts="0" description="Get-FunctionInfo">
+            <results>
+              <test-suite type="TestFixture" name="From file" executed="True" result="Success" success="True" time="0.2639" asserts="0" description="From file">
+                <results>
+                  <test-case description="Generates FunctionInfo from a script in a file" name="Get-FunctionInfo.From file.Generates FunctionInfo from a script in a file" time="0.1372" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Ignores nested functions by default" name="Get-FunctionInfo.From file.Ignores nested functions by default" time="0.0445" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Finds nested functions when requested" name="Get-FunctionInfo.From file.Finds nested functions when requested" time="0.0396" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Error, non-terminating, when the file content is not valid" name="Get-FunctionInfo.From file.Error, non-terminating, when the file content is not valid" time="0.0426" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="From script block" executed="True" result="Success" success="True" time="0.125" asserts="0" description="From script block">
+                <results>
+                  <test-case description="Generates FunctionInfo from a script in a file" name="Get-FunctionInfo.From script block.Generates FunctionInfo from a script in a file" time="0.0707" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Ignores nested functions by default" name="Get-FunctionInfo.From script block.Ignores nested functions by default" time="0.025" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Finds nested functions when requested" name="Get-FunctionInfo.From script block.Finds nested functions when requested" time="0.0292" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\helper\Invoke-CodingConventionRule.tests.ps1" executed="True" result="Success" success="True" time="0.5757" asserts="0" description="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\helper\Invoke-CodingConventionRule.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-CodingConventionRule" executed="True" result="Success" success="True" time="0.5757" asserts="0" description="Invoke-CodingConventionRule">
+            <results>
+              <test-suite type="TestFixture" name="FromPath" executed="True" result="Success" success="True" time="0.0932" asserts="0" description="FromPath">
+                <results>
+                  <test-case description="Executes a rule for a script" name="Invoke-CodingConventionRule.FromPath.Executes a rule for a script" time="0.0932" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="FromCommandName" executed="True" result="Success" success="True" time="0.0808" asserts="0" description="FromCommandName">
+                <results>
+                  <test-case description="Executes a rule for a script" name="Invoke-CodingConventionRule.FromCommandName.Executes a rule for a script" time="0.0808" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="FromScriptBlock" executed="True" result="Success" success="True" time="0.0908" asserts="0" description="FromScriptBlock">
+                <results>
+                  <test-case description="Executes a rule for a script block" name="Invoke-CodingConventionRule.FromScriptBlock.Executes a rule for a script block" time="0.0908" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Error handling" executed="True" result="Success" success="True" time="0.3109" asserts="0" description="Error handling">
+                <results>
+                  <test-case description="Error, Terminating, when the rule does not exist" name="Invoke-CodingConventionRule.Error handling.Error, Terminating, when the rule does not exist" time="0.2808" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Error, Terminating, when attempting to run using a compiled command" name="Invoke-CodingConventionRule.Error handling.Error, Terminating, when attempting to run using a compiled command" time="0.0301" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\helper\Resolve-ParameterSet.tests.ps1" executed="True" result="Success" success="True" time="1.0533" asserts="0" description="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\helper\Resolve-ParameterSet.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Resolve-ParameterSet" executed="True" result="Success" success="True" time="1.0533" asserts="0" description="Resolve-ParameterSet">
+            <results>
+              <test-suite type="TestFixture" name="ParameterName empty" executed="True" result="Success" success="True" time="0.4042" asserts="0" description="ParameterName empty">
+                <results>
+                  <test-case description="Returns __AllParameterSets, when no parameters are defined" name="Resolve-ParameterSet.ParameterName empty.Returns __AllParameterSets, when no parameters are defined" time="0.2258" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Returns __AllParameterSets, when only non-mandatory parameters are defined" name="Resolve-ParameterSet.ParameterName empty.Returns __AllParameterSets, when only non-mandatory parameters are defined" time="0.0469" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Returns a declared default parameter set name, when only non-mandatory parameters are defined" name="Resolve-ParameterSet.ParameterName empty.Returns a declared default parameter set name, when only non-mandatory parameters are defined" time="0.0532" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Error, non-terminating, when no parameter sets match" name="Resolve-ParameterSet.ParameterName empty.Error, non-terminating, when no parameter sets match" time="0.0783" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="One parameter name requested" executed="True" result="Success" success="True" time="0.2797" asserts="0" description="One parameter name requested">
+                <results>
+                  <test-case description="Returns __AllParameterSets, when a mandatory parameter is defined" name="Resolve-ParameterSet.One parameter name requested.Returns __AllParameterSets, when a mandatory parameter is defined" time="0.1122" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Returns a declared default parameter set name, when a mandatory parameter is defined" name="Resolve-ParameterSet.One parameter name requested.Returns a declared default parameter set name, when a mandatory parameter is defined" time="0.0391" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Returns a named parameter set name, when a mandatory parameter is defined in a set" name="Resolve-ParameterSet.One parameter name requested.Returns a named parameter set name, when a mandatory parameter is defined in a set" time="0.0405" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Returns a named parameter set name, when a mandatory parameter is defined in more than one set" name="Resolve-ParameterSet.One parameter name requested.Returns a named parameter set name, when a mandatory parameter is defined in more than one set" time="0.0349" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Error, Non-terminating, when the parameter is not listed" name="Resolve-ParameterSet.One parameter name requested.Error, Non-terminating, when the parameter is not listed" time="0.053" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Two parameter names requested" executed="True" result="Success" success="True" time="0.3694" asserts="0" description="Two parameter names requested">
+                <results>
+                  <test-case description="Returns __AllParameterSets, when either parameter is mandatory" name="Resolve-ParameterSet.Two parameter names requested.Returns __AllParameterSets, when either parameter is mandatory" time="0.071" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Returns a declared default parameter set name, when a mandatory parameter is defined" name="Resolve-ParameterSet.Two parameter names requested.Returns a declared default parameter set name, when a mandatory parameter is defined" time="0.0381" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Returns a named parameter set name, when a mandatory parameter is defined in more than one set" name="Resolve-ParameterSet.Two parameter names requested.Returns a named parameter set name, when a mandatory parameter is defined in more than one set" time="0.0322" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Returns a declared default parameter set name, when the default parameter set was used to break an ambiguous set tie" name="Resolve-ParameterSet.Two parameter names requested.Returns a declared default parameter set name, when the default parameter set was used to break an ambiguous set tie" time="0.0398" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Error, Non-terminating, when either parameter is not listed" name="Resolve-ParameterSet.Two parameter names requested.Error, Non-terminating, when either parameter is not listed" time="0.104" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Error, Non-terminating, when the parameters resolve to more than one non-default parameter set" name="Resolve-ParameterSet.Two parameter names requested.Error, Non-terminating, when the parameters resolve to more than one non-default parameter set" time="0.0845" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSAvoidEmptyNamedBlocks.tests.ps1" executed="True" result="Success" success="True" time="0.2277" asserts="0" description="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSAvoidEmptyNamedBlocks.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="PSAvoidEmptyNamedBlocks" executed="True" result="Success" success="True" time="0.2277" asserts="0" description="PSAvoidEmptyNamedBlocks">
+            <results>
+              <test-suite type="TestFixture" name="Present" executed="True" result="Success" success="True" time="0.1736" asserts="0" description="Present">
+                <results>
+                  <test-case description="Empty Begin present, empty, returns record" name="PSAvoidEmptyNamedBlocks.Present.Empty Begin present, empty, returns record" time="0.0933" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Empty Begin and End present, returns 2 records" name="PSAvoidEmptyNamedBlocks.Present.Empty Begin and End present, returns 2 records" time="0.0303" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Empty DynamicParam and Process present, returns 2 records" name="PSAvoidEmptyNamedBlocks.Present.Empty DynamicParam and Process present, returns 2 records" time="0.026" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Empty Begin, with comments, returns 1 record" name="PSAvoidEmptyNamedBlocks.Present.Empty Begin, with comments, returns 1 record" time="0.024" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Absent" executed="True" result="Success" success="True" time="0.0542" asserts="0" description="Absent">
+                <results>
+                  <test-case description="Named blocks absent, returns null" name="PSAvoidEmptyNamedBlocks.Absent.Named blocks absent, returns null" time="0.0542" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSAvoidNestedFunctions.tests.ps1" executed="True" result="Success" success="True" time="0.2866" asserts="0" description="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSAvoidNestedFunctions.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="PSAvoidNestedFunctions" executed="True" result="Success" success="True" time="0.2866" asserts="0" description="PSAvoidNestedFunctions">
+            <results>
+              <test-suite type="TestFixture" name="Present, single result" executed="True" result="Success" success="True" time="0.1162" asserts="0" description="Present, single result">
+                <results>
+                  <test-case description="Nested function present, returns record" name="PSAvoidNestedFunctions.Present, single result.Nested function present, returns record" time="0.1053" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Record description, contains the name of the parent function" name="PSAvoidNestedFunctions.Present, single result.Record description, contains the name of the parent function" time="0.0108" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Present, multiple results" executed="True" result="Success" success="True" time="0.1155" asserts="0" description="Present, multiple results">
+                <results>
+                  <test-case description="Nested functions present, returns 2 records" name="PSAvoidNestedFunctions.Present, multiple results.Nested functions present, returns 2 records" time="0.092" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Record descriptions, contain the name of the parent function" name="PSAvoidNestedFunctions.Present, multiple results.Record descriptions, contain the name of the parent function" time="0.0235" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Absent" executed="True" result="Success" success="True" time="0.055" asserts="0" description="Absent">
+                <results>
+                  <test-case description="Nested function absent, returns null" name="PSAvoidNestedFunctions.Absent.Nested function absent, returns null" time="0.055" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSAvoidProcessWithoutPipeline.tests.ps1" executed="True" result="Success" success="True" time="0.2757" asserts="0" description="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSAvoidProcessWithoutPipeline.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="PSAvoidProcessWithoutPipeline" executed="True" result="Success" success="True" time="0.2757" asserts="0" description="PSAvoidProcessWithoutPipeline">
+            <results>
+              <test-suite type="TestFixture" name="Present" executed="True" result="Success" success="True" time="0.2117" asserts="0" description="Present">
+                <results>
+                  <test-case description="Process present, param present, no input pipeline, returns record" name="PSAvoidProcessWithoutPipeline.Present.Process present, param present, no input pipeline, returns record" time="0.0886" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Process present, param present, no input pipeline, returns record" name="PSAvoidProcessWithoutPipeline.Present.Process present, param present, no input pipeline, returns record" time="0.0337" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Process present, param present, input pipeline (explicit, ByVal), returns null" name="PSAvoidProcessWithoutPipeline.Present.Process present, param present, input pipeline (explicit, ByVal), returns null" time="0.0226" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Process present, param present, input pipeline (implicit, ByVal), returns null" name="PSAvoidProcessWithoutPipeline.Present.Process present, param present, input pipeline (implicit, ByVal), returns null" time="0.0178" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Process present, param present, input pipeline (explicit, ByPropertyName), returns null" name="PSAvoidProcessWithoutPipeline.Present.Process present, param present, input pipeline (explicit, ByPropertyName), returns null" time="0.0229" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Process present, param present, input pipeline (implicit, ByPropertyName), returns null" name="PSAvoidProcessWithoutPipeline.Present.Process present, param present, input pipeline (implicit, ByPropertyName), returns null" time="0.0261" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Absent" executed="True" result="Success" success="True" time="0.064" asserts="0" description="Absent">
+                <results>
+                  <test-case description="Process present, params absent, returns null" name="PSAvoidProcessWithoutPipeline.Absent.Process present, params absent, returns null" time="0.0439" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Process absent, returns null" name="PSAvoidProcessWithoutPipeline.Absent.Process absent, returns null" time="0.0201" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSAvoidUsingAddType.tests.ps1" executed="True" result="Success" success="True" time="0.1589" asserts="0" description="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSAvoidUsingAddType.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="PSAvoidUsingAddType" executed="True" result="Success" success="True" time="0.1589" asserts="0" description="PSAvoidUsingAddType">
+            <results>
+              <test-suite type="TestFixture" name="Present" executed="True" result="Success" success="True" time="0.1026" asserts="0" description="Present">
+                <results>
+                  <test-case description="Add-Type present, returns record" name="PSAvoidUsingAddType.Present.Add-Type present, returns record" time="0.1026" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Absent" executed="True" result="Success" success="True" time="0.0564" asserts="0" description="Absent">
+                <results>
+                  <test-case description="Add-Type absent, returns null" name="PSAvoidUsingAddType.Absent.Add-Type absent, returns null" time="0.0564" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSAvoidUsingNewObjectToCreatePSObject.tests.ps1" executed="True" result="Success" success="True" time="0.1572" asserts="0" description="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSAvoidUsingNewObjectToCreatePSObject.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="PSAvoidUsingNewObjectToCreatePSObject" executed="True" result="Success" success="True" time="0.1572" asserts="0" description="PSAvoidUsingNewObjectToCreatePSObject">
+            <results>
+              <test-suite type="TestFixture" name="Present" executed="True" result="Success" success="True" time="0.1032" asserts="0" description="Present">
+                <results>
+                  <test-case description="New-Object present, with Property, returns record" name="PSAvoidUsingNewObjectToCreatePSObject.Present.New-Object present, with Property, returns record" time="0.0882" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="New-Object present, without Property, returns null" name="PSAvoidUsingNewObjectToCreatePSObject.Present.New-Object present, without Property, returns null" time="0.015" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Absent" executed="True" result="Success" success="True" time="0.054" asserts="0" description="Absent">
+                <results>
+                  <test-case description="New-Object absent, returns null" name="PSAvoidUsingNewObjectToCreatePSObject.Absent.New-Object absent, returns null" time="0.054" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSAvoidUsingThrow.tests.ps1" executed="True" result="Success" success="True" time="0.3384" asserts="0" description="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSAvoidUsingThrow.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="PSAvoidUsingThrow" executed="True" result="Success" success="True" time="0.3384" asserts="0" description="PSAvoidUsingThrow">
+            <results>
+              <test-suite type="TestFixture" name="Present" executed="True" result="Success" success="True" time="0.281" asserts="0" description="Present">
+                <results>
+                  <test-case description="Throw present, outside try, returns record" name="PSAvoidUsingThrow.Present.Throw present, outside try, returns record" time="0.1254" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Throw present, outside try, try present, returns record" name="PSAvoidUsingThrow.Present.Throw present, outside try, try present, returns record" time="0.0398" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Throw present, mixed, returns record" name="PSAvoidUsingThrow.Present.Throw present, mixed, returns record" time="0.047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Throw present, inside try, returns null" name="PSAvoidUsingThrow.Present.Throw present, inside try, returns null" time="0.0343" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Throw present, nested, inside try" name="PSAvoidUsingThrow.Present.Throw present, nested, inside try" time="0.0345" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Absent" executed="True" result="Success" success="True" time="0.0574" asserts="0" description="Absent">
+                <results>
+                  <test-case description="Throw absent, returns null" name="PSAvoidUsingThrow.Absent.Throw absent, returns null" time="0.0574" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSAvoidWriteErrorStop.tests.ps1" executed="True" result="Success" success="True" time="0.2652" asserts="0" description="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSAvoidWriteErrorStop.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="PSAvoidWriteErrorStop" executed="True" result="Success" success="True" time="0.2652" asserts="0" description="PSAvoidWriteErrorStop">
+            <results>
+              <test-suite type="TestFixture" name="Present" executed="True" result="Success" success="True" time="0.2166" asserts="0" description="Present">
+                <results>
+                  <test-case description="Write-Error, with ErrorAction Stop present, returns record" name="PSAvoidWriteErrorStop.Present.Write-Error, with ErrorAction Stop present, returns record" time="0.1157" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Write-Error present, with ErrorAction 1, returns record" name="PSAvoidWriteErrorStop.Present.Write-Error present, with ErrorAction 1, returns record" time="0.0234" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Write-Error present, with EA Stop, returns record" name="PSAvoidWriteErrorStop.Present.Write-Error present, with EA Stop, returns record" time="0.0319" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Write-Error present, with EA 1, returns record" name="PSAvoidWriteErrorStop.Present.Write-Error present, with EA 1, returns record" time="0.0268" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Write-Error present, without ErrorAction Stop, returns null" name="PSAvoidWriteErrorStop.Present.Write-Error present, without ErrorAction Stop, returns null" time="0.0187" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Absent" executed="True" result="Success" success="True" time="0.0486" asserts="0" description="Absent">
+                <results>
+                  <test-case description="Write-Error absent, returns null" name="PSAvoidWriteErrorStop.Absent.Write-Error absent, returns null" time="0.0486" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSUseFilterForProcessBlockOnlyFunctions.tests.ps1" executed="True" result="Success" success="True" time="0.2397" asserts="0" description="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSUseFilterForProcessBlockOnlyFunctions.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="PSUseFilterForProcessBlockOnlyFunctions" executed="True" result="Success" success="True" time="0.2397" asserts="0" description="PSUseFilterForProcessBlockOnlyFunctions">
+            <results>
+              <test-suite type="TestFixture" name="Present" executed="True" result="Success" success="True" time="0.1106" asserts="0" description="Present">
+                <results>
+                  <test-case description="Function using process block only present, returns record" name="PSUseFilterForProcessBlockOnlyFunctions.Present.Function using process block only present, returns record" time="0.1106" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Absent" executed="True" result="Success" success="True" time="0.1291" asserts="0" description="Absent">
+                <results>
+                  <test-case description="Function present, begin present, returns null" name="PSUseFilterForProcessBlockOnlyFunctions.Absent.Function present, begin present, returns null" time="0.0475" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Function present, end present, returns null" name="PSUseFilterForProcessBlockOnlyFunctions.Absent.Function present, end present, returns null" time="0.0191" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Function present, no blocks, returns null" name="PSUseFilterForProcessBlockOnlyFunctions.Absent.Function present, no blocks, returns null" time="0.0177" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Function present, no pipeline parameters, returns null" name="PSUseFilterForProcessBlockOnlyFunctions.Absent.Function present, no pipeline parameters, returns null" time="0.0203" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Filter present, returns null" name="PSUseFilterForProcessBlockOnlyFunctions.Absent.Filter present, returns null" time="0.0245" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSUseSyntacticallyCorrectExamples.tests.ps1" executed="True" result="Success" success="True" time="0.344" asserts="0" description="C:\Development\ScriptAnalyzerRules\Indented.CodingConventions\tests\unit\rules\PSUseSyntacticallyCorrectExamples.tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="PSUseSyntacticallyCorrectExamples" executed="True" result="Success" success="True" time="0.344" asserts="0" description="PSUseSyntacticallyCorrectExamples">
+            <results>
+              <test-suite type="TestFixture" name="Present" executed="True" result="Success" success="True" time="0.2961" asserts="0" description="Present">
+                <results>
+                  <test-case description="Example present, invalid parameter, returns record" name="PSUseSyntacticallyCorrectExamples.Present.Example present, invalid parameter, returns record" time="0.1206" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Example present, valid parameter, invalid parameter set, returns record" name="PSUseSyntacticallyCorrectExamples.Present.Example present, valid parameter, invalid parameter set, returns record" time="0.0387" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Example present, not advanced function, returns null" name="PSUseSyntacticallyCorrectExamples.Present.Example present, not advanced function, returns null" time="0.0158" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Example present, valid parameters, no parameter set, returns null" name="PSUseSyntacticallyCorrectExamples.Present.Example present, valid parameters, no parameter set, returns null" time="0.0385" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Example present, valid parameters, valid parameter set, returns null" name="PSUseSyntacticallyCorrectExamples.Present.Example present, valid parameters, valid parameter set, returns null" time="0.0465" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Example present, valid parameters, valid parameter set, repeated &quot;command&quot; name, returns null" name="PSUseSyntacticallyCorrectExamples.Present.Example present, valid parameters, valid parameter set, repeated &quot;command&quot; name, returns null" time="0.0361" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Absent" executed="True" result="Success" success="True" time="0.0479" asserts="0" description="Absent">
+                <results>
+                  <test-case description="Write-Error absent, returns null" name="PSUseSyntacticallyCorrectExamples.Absent.Write-Error absent, returns null" time="0.0479" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
