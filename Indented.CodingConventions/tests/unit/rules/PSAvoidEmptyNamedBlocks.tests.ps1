@@ -5,7 +5,7 @@ InModuleScope Indented.CodingConventions {
         }
 
         Context 'Present' {
-            It 'Empty Begin present, empty, returns record' {
+            It 'Empty Begin present, returns record' {
                 $script = {
                     begin {
 
