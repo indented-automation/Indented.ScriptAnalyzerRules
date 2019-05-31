@@ -170,6 +170,18 @@ InModuleScope Indented.CodingConventions {
 
                 Invoke-CodingConventionRule -ScriptBlock $script @ruleName | Should -BeNullOrEmpty
             }
+
+            It 'parent is a class, returns null' {
+                $script = {
+                    class name {
+                        [void] method () {
+
+                        }
+                    }
+                }
+
+                Invoke-CodingConventionRule -ScriptBlock $script @ruleName | Should -BeNullOrEmpty
+            }
         }
     }
 }

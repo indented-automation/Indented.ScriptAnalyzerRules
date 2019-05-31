@@ -60,6 +60,10 @@ filter PSUseSyntacticallyCorrectExamples {
         [FunctionDefinitionAst]$ast
     )
 
+    if ($ast.Parent.Parent.IsClass) {
+        return
+    }
+    
     $definition = [ScriptBlock]::Create($ast.Extent.ToString())
     $functionInfo = Get-FunctionInfo -ScriptBlock $definition
 
