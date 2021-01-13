@@ -25,21 +25,3 @@ It 'Does not use nested functions' {
     Invoke-CodingConventionRule -Command TestSubjectName -RuleName AvoidNestedFunctions | Should -BeNullOrEmpty
 }
 ```
-
-### Assert-RuleCompliance
-
-In the following example, the parent describe block is assumed to be named after the test subject.
-
-```powershell
-It 'Does not use nested functions' {
-    Assert-RuleCompliance -RuleName AvoidNestedFunctions
-}
-```
-
-If the describe block uses a different naming convention the test subject may be specified.
-
-```powershell
-It 'Does not use nested functions' {
-    Assert-RuleCompliance -RuleName AvoidNestedFunctions -CommandName TestSubjectName
-}
-```

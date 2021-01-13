@@ -1,0 +1,5 @@
+{
+    "editor.tabSize": 4,
+    "powershell.codeFormatting.preset": "OTBS",
+    "powershell.scriptAnalysis.settingsPath": "PSScriptAnalyzerSettings.psd1"
+}
