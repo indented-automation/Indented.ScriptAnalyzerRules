@@ -16,61 +16,77 @@ function AvoidThrowOutsideOfTry {
         [FunctionDefinitionAst]$ast
     )
 
-    $isAdvanced = $null -ne $ast.Find(
+    $isAdvanced = $null -ne $ast.Body.Find(
         {
             param ( $ast )
 
             $ast -is [AttributeAst] -and
             $ast.TypeName.Name -in 'CmdletBinding', 'Parameter'
         },
-        $true
+        $false
     )
 
     if (-not $isAdvanced) {
         return
     }
 
-    $throwStatements = $ast.FindAll(
+    $namedBlocks = $ast.Body.Find(
         {
             param ( $ast )
 
-            $ast -is [ThrowStatementAst]
+            $ast -is [NamedBlockAst]
         },
-        $true
+        $false
     )
 
-    if (-not $throwStatements) {
-        return
-    }
+    foreach ($namedBlock in $namedBlocks) {
+        $throwStatements = $namedBlock.FindAll(
+            {
+                param ( $ast )
 
-    $tryStatements = $ast.FindAll(
-        {
-            param ( $ast )
+                $ast -is [ThrowStatementAst]
+            },
+            $false
+        )
 
-            $ast -is [TryStatementAst]
-        },
-        $true
-    )
-
-    foreach ($throwStatement in $throwStatements) {
-        $isWithinExtentOfTry = $false
-
-        foreach ($tryStatement in $tryStatements) {
-            $isStatementWithinExtentOfTry = (
-                $throwStatement.Extent.StartOffset -gt $tryStatement.Extent.StartOffset -and
-                $throwStatement.Extent.EndOffset -lt $tryStatement.Extent.EndOffset
-            )
-
-            if ($isStatementWithinExtentOfTry) {
-                $isWithinExtentOfTry = $true
-            }
+        if (-not $throwStatements) {
+            return
         }
-        if (-not $isWithinExtentOfTry) {
-            [DiagnosticRecord]@{
-                Message  = 'throw is used to terminate a function outside of try in the function {0}.' -f $ast.name
-                Extent   = $throwStatement.Extent
-                RuleName = $myinvocation.MyCommand.Name
-                Severity = 'Error'
+
+        $tryStatements = $namedBlock.FindAll(
+            {
+                param ( $ast )
+
+                $ast -is [TryStatementAst]
+            },
+            $false
+        )
+
+        foreach ($throwStatement in $throwStatements) {
+            if ($tryStatements) {
+                $isWithinExtentOfTry = $false
+
+                foreach ($tryStatement in $tryStatements) {
+                    $isStatementWithinExtentOfTry = (
+                        $throwStatement.Extent.StartOffset -gt $tryStatement.Extent.StartOffset -and
+                        $throwStatement.Extent.EndOffset -lt $tryStatement.Extent.EndOffset
+                    )
+
+                    if ($isStatementWithinExtentOfTry) {
+                        $isWithinExtentOfTry = $true
+                    }
+                }
+            } else {
+                $isWithinExtentOfTry = $false
+            }
+
+            if (-not $isWithinExtentOfTry) {
+                [DiagnosticRecord]@{
+                    Message  = 'throw is used to terminate a function outside of try in the function {0}.' -f $ast.name
+                    Extent   = $throwStatement.Extent
+                    RuleName = $myinvocation.MyCommand.Name
+                    Severity = 'Error'
+                }
             }
         }
     }

@@ -20,22 +20,6 @@ Describe AvoidThrowOutsideOfTry {
                     [CmdletBinding()]
                     param ( )
 
-                    try {
-                        function nested {
-                            throw 'message'
-                        }
-                    } catch {
-
-                    }
-                }
-            }
-        }
-        @{
-            Script = {
-                function name {
-                    [CmdletBinding()]
-                    param ( )
-
                     throw 'message'
                     try {
                         'something else'
@@ -88,6 +72,22 @@ Describe AvoidThrowOutsideOfTry {
 
                     try {
                         if ($someCondition) {
+                            throw 'message'
+                        }
+                    } catch {
+                        Write-Verbose 'Error action'
+                    }
+                }
+            }
+        }
+        @{
+            Script = {
+                function name {
+                    [CmdletBinding()]
+                    param ( )
+
+                    try {
+                        function nested {
                             throw 'message'
                         }
                     } catch {
