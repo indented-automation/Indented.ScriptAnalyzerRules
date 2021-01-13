@@ -16,15 +16,16 @@ function AvoidNewObjectToCreatePSObject {
         [CommandAst]$ast
     )
 
-    if ($ast -is [CommandAst] -and
-        $ast.GetCommandName() -eq 'New-Object' -and
-        $ast.CommandElements.Where{ $_.ParameterName -like 'Prop*' }) {
+    if ($ast.GetCommandName() -eq 'New-Object') {
+        $isPSObject = $ast.CommandElements.Value -contains 'PSObject'
 
-        [DiagnosticRecord]@{
-            Message  = 'New-Object is used to create a custom object. [PSCustomObject] should be used instead.'
-            Extent   = $ast.Extent
-            RuleName = $myinvocation.MyCommand.Name
-            Severity = 'Warning'
+        if ($isPSObject) {
+            [DiagnosticRecord]@{
+                Message  = 'New-Object is used to create a custom object. Use [PSCustomObject] instead.'
+                Extent   = $ast.Extent
+                RuleName = $myinvocation.MyCommand.Name
+                Severity = 'Warning'
+            }
         }
     }
 }

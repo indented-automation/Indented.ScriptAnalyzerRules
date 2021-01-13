@@ -16,21 +16,29 @@ function AvoidDashCharacters {
         [ScriptBlockAst]$ast
     )
 
-    $ast.FindAll( {
-        if ($ast -is [System.Management.Automation.Language.BinaryExpressionAst] -or
-            $ast -is [System.Management.Automation.Language.CommandParameterAst] -or
-            $ast -is [System.Management.Automation.Language.AssignmentStatementAst]) {
+    $ast.FindAll(
+        {
+            param ( $ast )
 
-            if ($ast.ErrorPosition.Text[0] -in 0x2013, 0x2014, 0x2015) {
+            $shouldCheckAst = (
+                $ast -is [System.Management.Automation.Language.BinaryExpressionAst] -or
+                $ast -is [System.Management.Automation.Language.CommandParameterAst] -or
+                $ast -is [System.Management.Automation.Language.AssignmentStatementAst]
+            )
+
+            if ($shouldCheckAst) {
+                if ($ast.ErrorPosition.Text[0] -in 0x2013, 0x2014, 0x2015) {
+                    return $true
+                }
+            }
+            if ($ast -is [System.Management.Automation.Language.CommandAst] -and
+                $ast.GetCommandName() -match '\u2013|\u2014|\u2015') {
+
                 return $true
             }
-        }
-        if ($ast -is [System.Management.Automation.Language.CommandAst] -and
-            $ast.GetCommandName() -match '\u2013|\u2014|\u2015') {
-
-            return $true
-        }
-    }, $false) | ForEach-Object {
+        },
+        $false
+    ) | ForEach-Object {
         [DiagnosticRecord]@{
             Message  = 'Avoid en-dash, em-dash, and horizontal bar outside of strings.'
             Extent   = $_.Extent
