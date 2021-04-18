@@ -1,7 +1,0 @@
-@{
-    #
-    # Helper functions
-    #
-
-    
-}

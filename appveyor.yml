@@ -1,0 +1,60 @@
+image: Visual Studio 2019
+
+version: 1.0.0.{build}
+
+branches:
+  only:
+    - main
+
+skip_commits:
+  message: /updated? readme.*s/
+
+environment:
+  nugetapikey:
+    secure: 0z7hjgYRMchcf6Mmo1hBq8/zRBYnfJNvQF9cIc0bcli8mJD8pssECdWwyU2eVqgv
+
+build: false
+
+install:
+  - pwsh: |
+      Install-Module Configuration, ModuleBuilder, Pester, PSScriptAnalyzer -Force -SkipPublisherCheck
+      Set-Location $env:APPVEYOR_BUILD_FOLDER
+  - ps: |
+      Install-Module Pester, PSScriptAnalyzer -Force -SkipPublisherCheck
+      Set-Location $env:APPVEYOR_BUILD_FOLDER
+
+build_script:
+  - pwsh: |
+      .\build.ps1 -TaskName Clean, Build
+
+test_script:
+  - ps: .\build.ps1 -TaskName Test
+  - pwsh: .\build.ps1 -TaskName Test
+
+on_success:
+  - ps: |
+      $tagVersion = (git describe --tags --abbrev=0 2>$null) -replace "^v" -as [Version]
+
+      $shouldPublish = $env:APPVEYOR_REPO_BRANCH -in 'master', 'main' -and
+          $tagVersion -and
+          -not $env:APPVEYOR_PULL_REQUEST_NUMBER
+
+      if ($shouldPublish) {
+          $moduleManifestPath = Join-Path -Path $env:APPVEYOR_BUILD_FOLDER -ChildPath 'build\*\*\*.psd1' |
+              Get-Item |
+              Where-Object { $_.BaseName -eq $_.Directory.Parent.Name }
+          $moduleManifest = Import-PowerShellDataFile -Path $moduleManifestPath.FullName
+          $buildVersion = $moduleManifest['ModuleVersion'] -as [Version]
+
+          if ($tagVersion -eq $buildVersion) {
+              $galleryModule = Find-Module $moduleManifestPath.BaseName -ErrorAction SilentlyContinue
+
+              if (-not $galleryVersion -or $buildVersion -gt $galleryModule.Version) {
+                  .\build.ps1 -TaskName Publish
+              } else {
+                  Write-Host ('Skipping publish: {0} is already published' -f $buildVersion) -ForegroundColor Green
+              }
+          } else {
+              Write-Host ('Skipping publish: Tag {0} does not match build version {1}' -f $tagVersion, $buildVersion)
+          }
+      }
