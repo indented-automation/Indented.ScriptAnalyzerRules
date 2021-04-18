@@ -1,6 +1,7 @@
 Describe Invoke-CustomScriptAnalyzerRule {
     BeforeAll {
         function TestRule {
+            [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '')]
             param (
                 [System.Management.Automation.Language.ScriptBlockAst]$ast
             )
