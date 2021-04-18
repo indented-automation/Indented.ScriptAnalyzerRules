@@ -16,13 +16,16 @@ function AvoidNestedFunctions {
         [FunctionDefinitionAst]$ast
     )
 
-    $ast.Body.FindAll( {
-        param (
-            $ast
-        )
+    $ast.Body.FindAll(
+        {
+            param (
+                $ast
+            )
 
-        $ast -is [FunctionDefinitionAst]
-    }, $true ) | ForEach-Object {
+            $ast -is [FunctionDefinitionAst]
+        },
+        $true
+    ) | ForEach-Object {
         [DiagnosticRecord]@{
             Message  = 'The function {0} in {1} contains the nested function {2}.' -f $ast.Name, $ast.Extent.File, $_.name
             Extent   = $_.Extent

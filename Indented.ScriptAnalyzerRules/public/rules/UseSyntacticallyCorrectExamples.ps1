@@ -72,7 +72,7 @@ function UseSyntacticallyCorrectExamples {
                     } catch {
                         Write-Debug $_.Exception.Message
 
-                        [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{
+                        [DiagnosticRecord]@{
                             Message  = 'Unable to determine parameter set used by example {0} for the function {1}' -f @(
                                 $exampleNumber
                                 $ast.Name

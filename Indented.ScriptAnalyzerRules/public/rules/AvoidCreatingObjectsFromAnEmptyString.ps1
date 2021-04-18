@@ -17,10 +17,12 @@ function AvoidCreatingObjectsFromAnEmptyString {
     )
 
     if ($ast.PipelineElements.Count -gt 1) {
-        $isMatchingCase = $ast.PipelineElements[0].Expression -is [StringConstantExpressionAst] -and
+        $isMatchingCase = (
+            $ast.PipelineElements[0].Expression -is [StringConstantExpressionAst] -and
             $ast.PipelineElements[0].Expression.SafeGetValue().Trim() -eq '' -and
             $ast.PipelineElements[1] -is [CommandAst] -and
             $ast.PipelineElements[1].GetCommandName() -in 'select', 'Select-Object'
+        )
 
         if ($isMatchingCase) {
             [DiagnosticRecord]@{

@@ -9,29 +9,29 @@ function Resolve-ParameterSet {
         Resolve-ParameterSet attempts to discover the parameter set used by a set of named parameters.
 
     .EXAMPLE
-        Resolve-ParameterSet Invoke-Command -ParameterName ScriptBlock, NoNewScope
+        Resolve-ParameterSet -CommandName Invoke-Command -ParameterName ScriptBlock, NoNewScope
 
         Find the parameter set name Invoke-Command uses when ScriptBlock and NoNewScope are parameters.
 
     .EXAMPLE
-        Resolve-ParameterSet Get-Process -ParameterName IncludeUserName
+        Resolve-ParameterSet -CommandName Get-Process -ParameterName IncludeUserName
 
         Find the parameter set name Get-Process uses when the IncludeUserName parameter is defined.
 
     .EXAMPLE
-        Resolve-ParameterSet Invoke-Command -ParameterName Session, ArgumentList
+        Resolve-ParameterSet -CommandName Invoke-Command -ParameterName Session, ArgumentList
 
         Writes a non-terminating error noting that no parameter sets matched.
     #>
 
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'FromCommandInfo')]
     param (
         # Attempt to resolve the parameter set for the specified command name.
-        [Parameter(Mandatory = $true, Position = 1, ParameterSetName = 'FromCommandName')]
+        [Parameter(Mandatory, Position = 1, ParameterSetName = 'FromCommandName')]
         [string]$CommandName,
 
         # Attempt to resolve the parameter set for the specified CommandInfo.
-        [Parameter(Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = 'FromCommandInfo')]
+        [Parameter(Mandatory, ValueFromPipeline, ParameterSetName = 'FromCommandInfo')]
         [CommandInfo]$CommandInfo,
 
         # The parameter names which would be supplied.

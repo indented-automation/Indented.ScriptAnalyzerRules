@@ -40,10 +40,20 @@ function AvoidDashCharacters {
         $false
     ) | ForEach-Object {
         [DiagnosticRecord]@{
-            Message  = 'Avoid en-dash, em-dash, and horizontal bar outside of strings.'
-            Extent   = $_.Extent
-            RuleName = $myinvocation.MyCommand.Name
-            Severity = 'Error'
+            Message              = 'Avoid en-dash, em-dash, and horizontal bar outside of strings.'
+            Extent               = $_.Extent
+            RuleName             = $myinvocation.MyCommand.Name
+            Severity             = 'Error'
+            SuggestedCorrections = [CorrectionExtent[]]@(
+                [CorrectionExtent]::new(
+                    $_.Extent.StartLineNumber,
+                    $_.Extent.EndLineNumber,
+                    $_.Extent.StartColumnNumber,
+                    $_.Extent.EndColumnNumber,
+                    ($_.Extent.Text -replace '\u2013|\u2014|\u2015', '-'),
+                    'Replace dash character'
+                )
+            )
         }
     }
 }

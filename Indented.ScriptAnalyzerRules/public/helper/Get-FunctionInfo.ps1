@@ -28,7 +28,7 @@ function Get-FunctionInfo {
     [OutputType([System.Management.Automation.FunctionInfo])]
     param (
         # The path to a file containing one or more functions.
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'FromPath')]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName, ParameterSetName = 'FromPath')]
         [Alias('FullName')]
         [string]$Path,
 
