@@ -1,29 +1,15 @@
 @{
-    IncludeRules = @(
-        # Script functions
-        'PSAlignAssignmentStatement'
-        'PSAvoidUsingCmdletAliases'
-        'PSAvoidUsingWMICmdlet'
-        'PSAvoidUsingEmptyCatchBlock'
-        'PSUseCmdletCorrectly'
-        'PSAvoidUsingPositionalParameters'
-        'PSAvoidGlobalVars'
-        'PSAvoidUsingInvokeExpression'
-        'PSProvideCommentHelp'
-        'PSAvoidUsingPlainTextForPassword'
-        'PSAvoidUsingComputerNameHardcoded'
-        'PSAvoidUsingConvertToSecureStringWithPlainText'
-        'PSUsePSCredentialType'
-        'PSAvoidUsingUserNameAndPasswordParams'
-        'PSPlaceOpenBrace'
-        'PSPlaceCloseBrace'
-        'PSUseConsistentWhitespace'
-        'PSUseConsistentIndentation'
-        'PSAlignAssignmentStatement'
-        'PSUseCorrectCasing'
+    Severity     = @(
+        'Error'
+        'Warning'
     )
     ExcludeRules = @(
         'PSDSC*'
+        'PSUseDeclaredVarsMoreThanAssignments'
+        'PSUseShouldProcessForStateChangingFunctions'
+    )
+    CustomRulePath = @(
+        '~\Documents\PowerShell\Modules\Indented.ScriptAnalyzerRules'
     )
     Rules        = @{
         PSPlaceOpenBrace           = @{

@@ -30,7 +30,7 @@ function Test {
 
     $configuration = @{
         Run          = @{
-            Path     = Join-Path -Path $PSScriptRoot -ChildPath '*\tests' | Resolve-Path
+            Path     = [string[]](Join-Path -Path $PSScriptRoot -ChildPath '*\tests' | Resolve-Path)
             PassThru = $true
         }
         CodeCoverage = @{
