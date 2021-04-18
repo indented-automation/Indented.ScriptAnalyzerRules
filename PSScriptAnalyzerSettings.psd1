@@ -8,9 +8,6 @@
         'PSUseDeclaredVarsMoreThanAssignments'
         'PSUseShouldProcessForStateChangingFunctions'
     )
-    CustomRulePath = @(
-        '~\Documents\PowerShell\Modules\Indented.ScriptAnalyzerRules'
-    )
     Rules        = @{
         PSPlaceOpenBrace           = @{
             Enable             = $true
