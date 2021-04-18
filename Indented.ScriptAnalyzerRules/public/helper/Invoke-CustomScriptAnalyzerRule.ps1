@@ -2,8 +2,10 @@ function Invoke-CustomScriptAnalyzerRule {
     <#
     .SYNOPSIS
         Invoke a specific coding convention rule.
+
     .DESCRIPTION
         Invoke a specific coding convention rule against a defined file, script block, or command name.
+
     .EXAMPLE
         Invoke-CustomScriptAnalyzerRule -Path C:\Script.ps1 -RuleName AvoidNestedFunctions
 
