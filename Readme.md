@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/x6tsc69bea8nun4h?svg=true)](https://ci.appveyor.com/project/indented-automation/indented-scriptanalyzerrules)
+
 # Indented.ScriptAnalyzerRules
 
 Script based custom rules for PSScriptAnalyzer.
