@@ -27,7 +27,7 @@ function AvoidNestedFunctions {
         $true
     ) | ForEach-Object {
         [DiagnosticRecord]@{
-            Message  = 'The function {0} in {1} contains the nested function {2}.' -f $ast.Name, $ast.Extent.File, $_.name
+            Message  = 'The function {0} contains the nested function {1}.' -f $ast.Name, $_.name
             Extent   = $_.Extent
             RuleName = $myinvocation.MyCommand.Name
             Severity = 'Warning'
