@@ -21,15 +21,19 @@ function AvoidWriteErrorStop {
         $parameter = $ast.CommandElements.Where{ $_.ParameterName -like 'ErrorA*' -or $_.ParameterName -eq 'EA' }[0]
         if ($parameter) {
             $argumentIndex = $ast.CommandElements.IndexOf($parameter) + 1
-            $argument = $ast.CommandElements[$argumentIndex].SafeGetValue()
+            try {
+                $argument = $ast.CommandElements[$argumentIndex].SafeGetValue()
 
-            if ([Enum]::Parse([ActionPreference], $argument) -eq 'Stop') {
-                [DiagnosticRecord]@{
-                    Message  = 'Write-Error is used to create a terminating error. throw or $pscmdlet.ThrowTerminatingError should be used.'
-                    Extent   = $ast.Extent
-                    RuleName = $myinvocation.MyCommand.Name
-                    Severity = 'Warning'
+                if ([Enum]::Parse([ActionPreference], $argument) -eq 'Stop') {
+                    [DiagnosticRecord]@{
+                        Message  = 'Write-Error is used to create a terminating error. throw or $pscmdlet.ThrowTerminatingError should be used.'
+                        Extent   = $ast.Extent
+                        RuleName = $myinvocation.MyCommand.Name
+                        Severity = 'Warning'
+                    }
                 }
+            } catch {
+                Write-Debug ('Unable to evaluate ErrorAction argument in statement: {0}' -f $ast.Extent.Tostring())
             }
         }
     }

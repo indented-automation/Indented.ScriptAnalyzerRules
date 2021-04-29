@@ -16,6 +16,10 @@ function AvoidReturnAtEndOfNamedBlock {
         [NamedBlockAst]$ast
     )
 
+    if ($ast.Parent.Parent.Parent.Parent.IsClass) {
+        return
+    }
+
     $returnStatements = $ast.FindAll(
         {
             param ( $ast )
