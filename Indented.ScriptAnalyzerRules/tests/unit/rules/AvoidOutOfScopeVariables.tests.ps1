@@ -3,11 +3,21 @@ Describe AvoidOutOfScopeVariables {
         $ruleName = @{ RuleName = 'AvoidOutOfScopeVariables' }
     }
 
-    It 'Triggers when a script uses a variable from a parent scope "<Script>"' -TestCases @(
+    It 'Triggers when <Why> is used in "<Script>"' -TestCases @(
         @{
+            Why    = 'a script uses a variable from a parent scope'
             Script = {
                 function name {
                     if ($variable) { }
+                }
+            }
+        }
+        @{
+            Why    = 'a variable is used before it is declared'
+            Script = {
+                function name {
+                    if ($variable) { }
+                    $variable = $true
                 }
             }
         }

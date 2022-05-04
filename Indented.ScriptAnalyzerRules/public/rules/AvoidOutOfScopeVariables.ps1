@@ -99,7 +99,7 @@ function AvoidOutOfScopeVariables {
         $null = $specialVariables.Add($name)
     }
 
-    $declaredVariables = [HashSet[string]]::new([IEqualityComparer[string]][StringComparer]::OrginalIgnoreCase)
+    $declaredVariables = @{}
     $ast.Body.FindAll(
         {
             param (
@@ -111,7 +111,14 @@ function AvoidOutOfScopeVariables {
         },
         $true
     ) | ForEach-Object {
-        $null = $declaredVariables.Add($_.Left.VariablePath.UserPath)
+        $userPath = $_.Left.VariablePath.UserPath
+        if ($declaredVariables.Contains($userPath)) {
+            if ($_.Extent.StartOffset -lt $declaredVariables[$userPath]) {
+                $declaredVariables[$userPath] = $_.Extent.StartOffset
+            }
+        } else {
+            $declaredVariables[$userPath] = $_.Extent.StartOffset
+        }
     }
 
     $ast.Body.FindAll(
@@ -123,8 +130,14 @@ function AvoidOutOfScopeVariables {
             $ast -is [VariableExpressionAst] -and
             $ast.VariablePath.IsUnqualified -and
             $ast.Parent -isnot [ForEachStatementAst] -and
-            -not $declaredVariables.Contains($ast.VariablePath.UserPath) -and
-            -not $specialVariables.Contains($ast.VariablePath.UserPath)
+            -not $specialVariables.Contains($ast.VariablePath.UserPath) -and
+            (
+                (
+                    $declaredVariables.Contains($ast.VariablePath.UserPath) -and
+                    $ast.Extent.StartOffset -lt $declaredVariables[$ast.VariablePath.UserPath]
+                ) -or
+                -not $declaredVariables.Contains($ast.VariablePath.UserPath)
+            )
         },
         $true
     ) | ForEach-Object {
