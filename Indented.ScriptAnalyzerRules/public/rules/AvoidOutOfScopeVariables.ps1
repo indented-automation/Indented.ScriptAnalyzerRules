@@ -122,9 +122,9 @@ function AvoidOutOfScopeVariables {
 
             $ast -is [VariableExpressionAst] -and
             $ast.VariablePath.IsUnqualified -and
+            $ast.Parent -isnot [ForEachStatementAst] -and
             -not $declaredVariables.Contains($ast.VariablePath.UserPath) -and
-            -not $specialVariables.Contains($ast.VariablePath.UserPath) -and
-            $ast.Parent -isnot [ForEachStatementAst]
+            -not $specialVariables.Contains($ast.VariablePath.UserPath)
         },
         $true
     ) | ForEach-Object {
