@@ -1,4 +1,6 @@
-using namespace Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic; using namespace System.Management.Automation.Language; using namespace System.Collections.Generic
+using namespace Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic
+using namespace System.Management.Automation.Language
+using namespace System.Collections.Generic
 
 function AvoidOutOfScopeVariables {
     <#
