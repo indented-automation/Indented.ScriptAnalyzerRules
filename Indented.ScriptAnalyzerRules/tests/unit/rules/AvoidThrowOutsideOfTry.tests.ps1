@@ -6,7 +6,7 @@ Describe AvoidThrowOutsideOfTry {
     It 'Triggers when throw is used outside of a try block in "<Script>"' -TestCases @(
         @{
             Script = {
-                function name {
+                function testFunction {
                     [CmdletBinding()]
                     param ( )
 
@@ -16,7 +16,7 @@ Describe AvoidThrowOutsideOfTry {
         }
         @{
             Script = {
-                function name {
+                function testFunction {
                     [CmdletBinding()]
                     param ( )
 
@@ -31,7 +31,7 @@ Describe AvoidThrowOutsideOfTry {
         }
         @{
             Script = {
-                function name {
+                function testFunction {
                     [CmdletBinding()]
                     param ( )
 
@@ -52,7 +52,7 @@ Describe AvoidThrowOutsideOfTry {
     It 'Does not trigger when used inside of a try block in "<Script>"' -TestCases @(
         @{
             Script = {
-                function name {
+                function testFunction {
                     [CmdletBinding()]
                     param ( )
 
@@ -66,7 +66,7 @@ Describe AvoidThrowOutsideOfTry {
         }
         @{
             Script = {
-                function name {
+                function testFunction {
                     [CmdletBinding()]
                     param ( )
 
@@ -82,7 +82,7 @@ Describe AvoidThrowOutsideOfTry {
         }
         @{
             Script = {
-                function name {
+                function testFunction {
                     [CmdletBinding()]
                     param ( )
 
@@ -98,7 +98,7 @@ Describe AvoidThrowOutsideOfTry {
         }
         @{
             Script = {
-                function name {
+                function testFunction {
                     [CmdletBinding()]
                     param ( )
 

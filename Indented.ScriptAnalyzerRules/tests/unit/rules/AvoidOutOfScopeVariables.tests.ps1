@@ -7,7 +7,7 @@ Describe AvoidOutOfScopeVariables {
         @{
             Why    = 'a script uses a variable from a parent scope'
             Script = {
-                function name {
+                function testFunction {
                     if ($variable) { }
                 }
             }
@@ -15,7 +15,7 @@ Describe AvoidOutOfScopeVariables {
         @{
             Why    = 'a variable is used before it is declared'
             Script = {
-                function name {
+                function testFunction {
                     if ($variable) { }
                     $variable = $true
                 }
@@ -29,7 +29,7 @@ Describe AvoidOutOfScopeVariables {
         @{
             Why    = 'the variable is assigned prior to use'
             Script = {
-                function name {
+                function testFunction {
                     $variable = $true
                     if ($variable) { }
                 }
@@ -38,7 +38,7 @@ Describe AvoidOutOfScopeVariables {
         @{
             Why    = 'a built-in variable'
             Script = {
-                function name {
+                function testFunction {
                     if ($PSVersionTable.PSVersion) { }
                 }
             }
@@ -46,7 +46,7 @@ Describe AvoidOutOfScopeVariables {
         @{
             Why    = 'an explicit variable scope'
             Script = {
-                function name {
+                function testFunction {
                     if ($Script:variable) { }
                 }
             }
@@ -54,7 +54,7 @@ Describe AvoidOutOfScopeVariables {
         @{
             Why    = 'a loop variable is used'
             Script = {
-                function name {
+                function testFunction {
                     $array = 1..5
                     foreach ($value in $array) {
 
