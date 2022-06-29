@@ -9,13 +9,13 @@ Describe UseSyntacticallyCorrectExamples {
                 function testFunction {
                     <#
                     .SYNOPSIS
-                        name
+                        testFunction
                     .DESCRIPTION
-                        name
+                        testFunction
                     .EXAMPLE
-                        name -param2
+                        testFunction -param2
 
-                        An example of name.
+                        An example of testFunction.
                     #>
                     [CmdletBinding()]
                     param (
@@ -36,13 +36,13 @@ Describe UseSyntacticallyCorrectExamples {
                 function testFunction {
                     <#
                     .SYNOPSIS
-                        name
+                        testFunction
                     .DESCRIPTION
-                        name
+                        testFunction
                     .EXAMPLE
-                        name -param1 value -param2 value
+                        testFunction -param1 value -param2 value
 
-                        An example of name.
+                        An example of testFunction.
                     #>
                     [CmdletBinding()]
                     param (
@@ -68,13 +68,13 @@ Describe UseSyntacticallyCorrectExamples {
                 function testFunction {
                     <#
                     .SYNOPSIS
-                        name
+                        testFunction
                     .DESCRIPTION
-                        name
+                        testFunction
                     .EXAMPLE
-                        name -param1 value -param2 value
+                        testFunction -param1 value -param2 value
 
-                        An example of name.
+                        An example of testFunction.
                     #>
                     param (
                         $param1
@@ -91,13 +91,13 @@ Describe UseSyntacticallyCorrectExamples {
                 function testFunction {
                     <#
                     .SYNOPSIS
-                        name
+                        testFunction
                     .DESCRIPTION
-                        name
+                        testFunction
                     .EXAMPLE
-                        name -param1 value
+                        testFunction -param1 value
 
-                        An example of name.
+                        An example of testFunction.
                     #>
                     [CmdletBinding()]
                     param (
@@ -115,13 +115,13 @@ Describe UseSyntacticallyCorrectExamples {
                 function testFunction {
                     <#
                     .SYNOPSIS
-                        name
+                        testFunction
                     .DESCRIPTION
-                        name
+                        testFunction
                     .EXAMPLE
-                        name -param1 value
+                        testFunction -param1 value
 
-                        An example of name.
+                        An example of testFunction.
                     #>
                     [CmdletBinding()]
                     param (
