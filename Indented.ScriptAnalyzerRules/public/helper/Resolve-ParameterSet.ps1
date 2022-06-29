@@ -93,9 +93,11 @@ function Resolve-ParameterSet {
 
                     $errorRecord = [ErrorRecord]::new(
                         [InvalidOperationException]::new(
-                            ('{0}: Ambiguous parameter set: {1}' -f
-                                $CommandInfo.Name,
-                                ($candidateSets.Name -join ', ')
+                            (
+                                '{0}: Ambiguous parameter set: {1}' -f @(
+                                    $CommandInfo.Name
+                                    $candidateSets.Name -join ', '
+                                )
                             )
                         ),
                         'AmbiguousParameterSet',

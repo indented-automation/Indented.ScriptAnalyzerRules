@@ -6,21 +6,22 @@ Describe UseSyntacticallyCorrectExamples {
     Context 'Present' {
         It 'Example present, invalid parameter, returns record' {
             $script = {
-                function name {
+                function testFunction {
                     <#
                     .SYNOPSIS
-                        name
+                        testFunction
                     .DESCRIPTION
-                        name
+                        testFunction
                     .EXAMPLE
-                        name -param2
+                        testFunction -param2
 
-                        An example of name.
+                        An example of testFunction.
                     #>
                     [CmdletBinding()]
                     param (
                         $param1
                     )
+                    $param1
                 }
             }
 
@@ -32,16 +33,16 @@ Describe UseSyntacticallyCorrectExamples {
 
         It 'Example present, valid parameter, invalid parameter set, returns record' {
             $script = {
-                function name {
+                function testFunction {
                     <#
                     .SYNOPSIS
-                        name
+                        testFunction
                     .DESCRIPTION
-                        name
+                        testFunction
                     .EXAMPLE
-                        name -param1 value -param2 value
+                        testFunction -param1 value -param2 value
 
-                        An example of name.
+                        An example of testFunction.
                     #>
                     [CmdletBinding()]
                     param (
@@ -51,6 +52,8 @@ Describe UseSyntacticallyCorrectExamples {
                         [Parameter(ParameterSetName = 'two')]
                         $param2
                     )
+                    $param1
+                    $param2
                 }
             }
 
@@ -62,20 +65,21 @@ Describe UseSyntacticallyCorrectExamples {
 
         It 'Example present, not advanced function, returns null' {
             $script = {
-                function name {
+                function testFunction {
                     <#
                     .SYNOPSIS
-                        name
+                        testFunction
                     .DESCRIPTION
-                        name
+                        testFunction
                     .EXAMPLE
-                        name -param1 value -param2 value
+                        testFunction -param1 value -param2 value
 
-                        An example of name.
+                        An example of testFunction.
                     #>
                     param (
                         $param1
                     )
+                    $param1
                 }
             }
 
@@ -84,21 +88,22 @@ Describe UseSyntacticallyCorrectExamples {
 
         It 'Example present, valid parameters, no parameter set, returns null' {
             $script = {
-                function name {
+                function testFunction {
                     <#
                     .SYNOPSIS
-                        name
+                        testFunction
                     .DESCRIPTION
-                        name
+                        testFunction
                     .EXAMPLE
-                        name -param1 value
+                        testFunction -param1 value
 
-                        An example of name.
+                        An example of testFunction.
                     #>
                     [CmdletBinding()]
                     param (
                         $param1
                     )
+                    $param1
                 }
             }
 
@@ -107,16 +112,16 @@ Describe UseSyntacticallyCorrectExamples {
 
         It 'Example present, valid parameters, valid parameter set, returns null' {
             $script = {
-                function name {
+                function testFunction {
                     <#
                     .SYNOPSIS
-                        name
+                        testFunction
                     .DESCRIPTION
-                        name
+                        testFunction
                     .EXAMPLE
-                        name -param1 value
+                        testFunction -param1 value
 
-                        An example of name.
+                        An example of testFunction.
                     #>
                     [CmdletBinding()]
                     param (
@@ -126,6 +131,8 @@ Describe UseSyntacticallyCorrectExamples {
                         [Parameter(ParameterSetName = 'two')]
                         $param2
                     )
+                    $param1
+                    $param2
                 }
             }
 
@@ -134,21 +141,22 @@ Describe UseSyntacticallyCorrectExamples {
 
         It 'Example present, valid parameters, valid parameter set, repeated "command" name, returns null' {
             $script = {
-                function name {
+                function testFunction {
                     <#
                     .SYNOPSIS
-                        name
+                        testFunction
                     .DESCRIPTION
-                        name
+                        testFunction
                     .EXAMPLE
-                        name -param1 value
+                        testFunction -param1 value
 
-                        name is used to do stuff.
+                        testFunction is used to do stuff.
                     #>
                     [CmdletBinding()]
                     param (
                         $param1
                     )
+                    $param1
                 }
             }
 
@@ -159,11 +167,12 @@ Describe UseSyntacticallyCorrectExamples {
     Context 'Absent' {
         It 'Write-Error absent, returns null' {
             $script = {
-                function name {
+                function testFunction {
                     [CmdletBinding()]
                     param (
                         $param1
                     )
+                    $param1
                 }
             }
 
